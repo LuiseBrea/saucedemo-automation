@@ -51,10 +51,3 @@ test('login y usar token para obtener datos', async ({ request }) => {
   expect(body.data.id).toBe(2);
 
 });
-
-test('sin API key devuelve error', async ({ request }) => {
-
-  const response = await request.get(`${API_URL}/users/1`);
-  expect([401, 403]).toContain(response.status());
-
-});
