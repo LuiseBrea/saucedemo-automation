@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-const API_KEY = 'free_user_3FazgylqzJbSt7789LyzrsJPH81';
+const API_KEY = process.env.API_KEY;
+const API_URL = process.env.API_URL;
 
 test('obtener usuario con API key', async ({ request }) => {
 
@@ -38,7 +39,7 @@ test('login y usar token para obtener datos', async ({ request }) => {
   expect(token).toBeTruthy();
   console.log('Token recibido:', token);
 
-  const response = await request.get('https://reqres.in/api/users/2', {
+  const response = await request.get(`${API_URL}/users/2`, {
     headers: {
       'x-api-key': API_KEY,
       'Authorization': 'Bearer ' + token

@@ -1,6 +1,9 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -9,6 +12,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: [['html'], ['allure-playwright']],
   use: {
+    baseURL: process.env.BASE_URL,
     trace: 'on-first-retry',
     video: 'on',
     screenshot: 'only-on-failure',

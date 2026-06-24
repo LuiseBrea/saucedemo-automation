@@ -3,8 +3,8 @@ import { test, expect } from '@playwright/test';
 test('login exitoso', async ({ page }) => {
 
   // 1. Entrar a la página
-  await page.goto('https://www.saucedemo.com');
-
+  await page.goto('/');
+  
   // 2. Escribir el usuario
   await page.fill('#user-name', 'standard_user');
 
