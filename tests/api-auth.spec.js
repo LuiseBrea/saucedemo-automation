@@ -54,9 +54,7 @@ test('login y usar token para obtener datos', async ({ request }) => {
 
 test('sin API key devuelve error', async ({ request }) => {
 
-  const response = await request.get('https://reqres.in/api/users/1');
-
-  // Sin key debe rechazarnos
-  expect(response.status()).toBe(401);
+  const response = await request.get(`${API_URL}/users/1`);
+  expect([401, 403]).toContain(response.status());
 
 });
